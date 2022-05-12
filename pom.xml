@@ -13,6 +13,7 @@
         <module>Inventory-app</module>
         <module>Product-app</module>
         <module>Config</module>
+        <module>Eureka-server</module>
     </modules>
 
     <properties>

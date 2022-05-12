@@ -1,9 +1,7 @@
 package Inventory.service;
 
-import Inventory.data.InventoryItemDto;
-
-import java.util.List;
+import java.util.Set;
 
 public interface InventoryItemService {
-    List<InventoryItemDto> getAllItems();
+    Set<String> getAvailableIds(Set<String> ids);
 }

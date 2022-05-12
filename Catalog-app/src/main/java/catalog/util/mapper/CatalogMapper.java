@@ -18,6 +18,18 @@ public interface CatalogMapper {
 
     @Named("StringToBigDecimal")
     default BigDecimal convertToBigDecimal(String value) {
-        return value == null? BigDecimal.ZERO : new BigDecimal(value);
+        System.out.println(value);
+        return value == null? BigDecimal.ZERO : parse(value);
+    }
+
+    private BigDecimal parse(String value) {
+        BigDecimal result;
+        try {
+            result = new BigDecimal(value);
+        }
+        catch (NumberFormatException e) {
+            result = BigDecimal.ZERO;
+        }
+        return result;
     }
 }
