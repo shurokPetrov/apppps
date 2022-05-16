@@ -6,6 +6,7 @@ import catalog.repository.CatalogRepository;
 import catalog.service.CatalogService;
 import catalog.util.mapper.CatalogMapper;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,8 +26,10 @@ public class CatalogServiceImpl implements CatalogService {
                 .collect(Collectors.toList());
     }
 
+    @SneakyThrows
     @Override
     public List<CatalogDto> getCatalogsBySku(String sku) {
+        Thread.sleep(2000);
         return repository.getCatalogsBySku(sku).stream()
                 .map(value -> mapper.mapToDto(value))
                 .collect(Collectors.toList());
