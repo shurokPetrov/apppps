@@ -1,7 +1,5 @@
 package product.service;
 
-import product.data.InventoryItemDto;
-
 import java.util.List;
 import java.util.Set;
 

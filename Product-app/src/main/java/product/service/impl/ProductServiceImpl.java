@@ -3,7 +3,6 @@ package product.service.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import product.data.CatalogDto;
-import product.data.InventoryItemDto;
 import product.data.ProductResponseDto;
 import product.service.CatalogService;
 import product.service.InventoryService;
