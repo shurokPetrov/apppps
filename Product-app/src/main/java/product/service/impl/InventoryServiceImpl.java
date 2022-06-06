@@ -25,9 +25,9 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     @HystrixCommand(commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "6000"),
-//            @HystrixProperty(name = "coreSize", value = "2"),
             @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "3"),
-            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "1000")
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "1000"),
+            @HystrixProperty(name="execution.isolation.strategy", value="SEMAPHORE")
     })
     public List<String> getInventoryItems(Set<String> ids) {
         ResponseEntity<String[]> inventoryResponse =

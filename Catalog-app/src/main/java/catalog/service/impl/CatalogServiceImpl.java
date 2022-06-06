@@ -37,7 +37,6 @@ public class CatalogServiceImpl implements CatalogService {
 
     @Override
     public CatalogDto getById(String id) {
-        Optional t = Optional.ofNullable(repository.getById(id));
         Catalog catalog = Optional.ofNullable(repository.getById(id)).orElseGet(() -> new Catalog());
         return mapper.mapToDto(catalog);
     }

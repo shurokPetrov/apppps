@@ -22,12 +22,13 @@ public class CatalogServiceImpl implements CatalogService {
     private Convector<CatalogDto> convector;
     private ResponseChecker responseChecker;
 
+
     @Override
     @HystrixCommand(commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "6000"),
-//            @HystrixProperty(name = "coreSize", value = "2"),
-            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "3"),
-            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "1000")
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "1000"),
+            @HystrixProperty(name="execution.isolation.strategy", value="SEMAPHORE")
     })
     public CatalogDto getCatalogById(String id) {
         ResponseEntity<CatalogDto> catalogResponse =
@@ -43,9 +44,9 @@ public class CatalogServiceImpl implements CatalogService {
     @Override
     @HystrixCommand(commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "6000"),
-//            @HystrixProperty(name = "coreSize", value = "2"),
-            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "3"),
-            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "1000")
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "1000"),
+                @HystrixProperty(name="execution.isolation.strategy", value="SEMAPHORE")
     })
     public List<CatalogDto> getCatalogsBySku(String sku) {
         ResponseEntity<CatalogDto[]> catalogResponse =
